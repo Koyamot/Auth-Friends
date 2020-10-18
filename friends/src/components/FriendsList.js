@@ -7,7 +7,6 @@ const FriendsList = () => {
     const [friends, setFriends] = useState([])
 
     useEffect(() => {
-
         axiosWithAuth().get('/friends')
             .then((res) => {
                 setFriends(res.data);
@@ -24,12 +23,10 @@ const FriendsList = () => {
             <div className="friendsList">
                 {friends.map(friend => {
                     return(
-                        <div className="friendCard">
-                            <div key={friend.id}>
-                                <h3>{friend.name}</h3>
-                                <p>Age: {friend.age}</p>
-                                <p className="email-label">Email:</p><p className="email"> {friend.email}</p>
-                            </div>
+                        <div className="friendCard" key={friend.id}>
+                            <h3>{friend.name}</h3>
+                            <p>Age: {friend.age}</p>
+                            <p className="email-label">Email:</p><p className="email"> {friend.email}</p>
                         </div>
                     )
                 })}

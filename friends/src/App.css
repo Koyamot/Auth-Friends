@@ -54,3 +54,20 @@ a {
   margin-left: 24px;
   align-self: flex-start;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.Friends-addFriends{
+  justify-content: center;
+  box-shadow: none;
+}
+
+button {
+  width: 150px;
+  height: 32px;
+  margin: 0 auto;
+
+}

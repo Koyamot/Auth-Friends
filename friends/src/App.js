@@ -6,27 +6,25 @@ import './App.css';
 import Login from "./components/Login";
 import FriendsList from "./components/FriendsList"
 import PrivateRoute from "./components/PrivateRoute"
+import FriendsRoute from "./components/FriendsRoute"
+import Header from './components/Header.js'
 
 
 function App() {
+
+  
   return (
-    <Router>
-      <div className="App">
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/friends">My F.R.I.E.N.D.S.</Link>
-          </li>
-        </ul>
-        <Switch>
-          <PrivateRoute exact path="/friends" component={FriendsL} >
-          <Route path="/login" component={Login} />
-          <Route component={Login} />
-        </Switch>
-      </div>
-    </Router>
+    
+    <div className="App">
+      <Header/>
+
+          <Switch>
+            <PrivateRoute exact path="/friends" component={FriendsRoute} />
+            <Route path="/login" component={Login} />
+            <Route component={Login} />
+          </Switch>
+
+    </div>
   );
 }
 

@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 
 import { axiosWithAuth } from '../api/axiosWithAuth';
 
 
+
+
 const AddFriend = () => {
+
+    const { push } = useHistory();
+
+    const [friends, setFriends] = useState([])
 
     const [newFriend, setNewFriend] = useState({
         name: '',
@@ -25,6 +32,8 @@ const AddFriend = () => {
             .then(res => {
                 console.log(res);
                 setFriends(res.data);
+                push(`/friends`);
+
             })
             .catch(err => {
                 console.log(err)
@@ -35,8 +44,7 @@ const AddFriend = () => {
     return(
         <div>
             <h1>Add Your F. R. I. E. N. D. S.:</h1>
-            <form>
-                ADD FRIEND
+            <form onSubmit={handleSubmit}>
                 <label htmlFor='name'>
                     Name:
                     <input type='text' name='name' id='name' value={newFriend.name} onChange={handleChange}  />
@@ -49,7 +57,7 @@ const AddFriend = () => {
                     Email:
                     <input type='text' name='email' id='email' value={newFriend.email} onChange={handleChange} />
                 </label>
-                <button type='submit' onClick={handleSubmit}  >Add Friend</button>
+                <button type='submit'>Add Friend</button>
             </form>
         </div>
     )
